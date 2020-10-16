@@ -3,7 +3,9 @@
 {
   // 次の単語
   function setWord() {
-    word = words[Math.floor(Math.random() * words.length)]
+    // word = words[Math.floor(Math.random() * words.length)]
+    // 繰り返し防止
+    word = words.splice(Math.floor(Math.random() * words.length), 1)[0];
     target.textContent = word;
     loc = 0;
   }
@@ -12,7 +14,7 @@
     'red',
     'blue',
     'pink',
-  ]
+  ];
   // 単語の設定
   let word;
   // 何文字目を打っているか
@@ -36,6 +38,12 @@
 
     // 入力後次の単語へ
     if (loc === word.length) {
+      // 結果表示
+      if (words.length === 0) {
+        const result = document.getElementById('result');
+        result.textContent = 'Finished!';
+        return;
+      }
       setWord();
     }
   });
