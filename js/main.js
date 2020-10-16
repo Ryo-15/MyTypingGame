@@ -21,12 +21,18 @@
   let loc = 0;
   // タイム測定
   let startTime;
+  // プレイ中クリック防止
+  let isPlaying = false;
 
   // キー入力を取得
   const target = document.getElementById('target');
 
   // 開始時の処理
   document.addEventListener('click', () => {
+    if (isPlaying === true) {
+      return;
+    }
+    isPlaying = true;
     startTime = Date.now();
     setWord();
   });
