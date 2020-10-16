@@ -18,7 +18,7 @@
       // 1: _ed
       // 2: __d
       // 3: ___
-
+      target.textContent = '_'.repeat(loc) + word.substring(loc);
     }
   });
 }
