@@ -1,13 +1,20 @@
 'use strict';
 
 {
+  // 単語リスト
+  const words = [
+    'red',
+    'blue',
+    'pink',
+  ]
   // 単語の設定
-  const word = 'red';
+  let word;
   // 何文字目を打っているか
   let loc = 0;
 
   // キー入力を取得
   const target = document.getElementById('target');
+  word = words[Math.floor(Math.random() * words.length)]
   target.textContent = word;
 
   document.addEventListener('keydown', e => {
