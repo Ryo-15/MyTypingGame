@@ -19,10 +19,17 @@
   let word;
   // 何文字目を打っているか
   let loc = 0;
+  // タイム測定
+  let startTime;
 
   // キー入力を取得
   const target = document.getElementById('target');
-  setWord();
+
+  // 開始時の処理
+  document.addEventListener('click', () => {
+    startTime = Date.now();
+    setWord();
+  });
 
   document.addEventListener('keydown', e => {
     // 入力が正しくなければ、処理終了（早期リターン）
@@ -40,8 +47,9 @@
     if (loc === word.length) {
       // 結果表示
       if (words.length === 0) {
+        const elapsedTime = ((Date.now() - startTime) / 1000).toFixed(2);
         const result = document.getElementById('result');
-        result.textContent = 'Finished!';
+        result.textContent = `Finished! ${elapsedTime} seconds!`;
         return;
       }
       setWord();
